@@ -42,8 +42,11 @@ class DebatesController < ApplicationController
   # POST /debates
   # POST /debates.json
   def create
+
     @debate = Debate.new(params[:debate])
     @debate.user_id = current_user.id
+    @debate.likes = 0
+    
     respond_to do |format|
 
       if @debate.save
@@ -84,4 +87,12 @@ class DebatesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def like
+    @debate = Debate.find(params[:id])
+    likes = (@debate.likes || 0) + 1
+    @debate.update_attributes(likes: likes)
+    redirect_to :back, notice: 'You liked the post.'
+  end
+
 end
