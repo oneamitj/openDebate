@@ -5,20 +5,11 @@
 .debate {
 	border-bottom: solid 1px #E8ADAA;
 	padding: 5px 0;
-}
+	p {
+		margin: 4px 0;
+	}
 
-.debate p {
-	margin: 4px 0;
-}
-
-.debate.hover {
-	background: #FDD7E4; 
-}
-
-.debate .admin {
-	display: none 
-}
-
-.debate.hover .admin{
-	display: inline;
+    &:hover {
+		background: #FFF5EE; 
+	}
 }

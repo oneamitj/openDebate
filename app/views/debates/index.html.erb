@@ -13,10 +13,12 @@
     <p><%= debate.likes %></p>
     <div class='meta'>
       <%= link_to time_ago_in_words(debate.created_at) +' ago', debate %>
-      <span class="admin">
-        | <%= link_to 'Edit', edit_debate_path(debate) %> |
-        <%= link_to 'Delete', debate, method: :delete, data: { confirm: 'Are you sure U want to delete?' } %>
-      </span> 
+      <% if (current_user && current_user.debate_ids.include?(debate.id)) %>
+        <span class="hover_show hidden">
+          | <%= link_to 'Edit', edit_debate_path(debate) %> |
+          <%= link_to 'Delete', debate, method: :delete, data: { confirm: 'Are you sure U want to delete?' } %>
+        </span> 
+      <% end %>
      </div>
   </div>
 <% end %>
