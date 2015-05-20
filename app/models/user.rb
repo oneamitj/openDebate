@@ -11,4 +11,5 @@ class User < ActiveRecord::Base
 
   has_many :debates
   has_many :comments
+
 end
