@@ -93,6 +93,8 @@ class DebatesController < ApplicationController
     likes = (@debate.likes || 0) + 1
     @debate.update_attributes(likes: likes)
     redirect_to :back, notice: 'You liked the post.'
+
+    
   end
 
 end
