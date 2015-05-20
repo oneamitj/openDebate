@@ -15,7 +15,10 @@ class DebatesController < ApplicationController
   # GET /debates/1.json
   def show
     @debate = Debate.find(params[:id])
-    @comments = @debate.comments
+
+    @prev_comment = @debate.comments
+
+    @comment = Comment.new
 
     respond_to do |format|
       format.html # show.html.erb
@@ -46,6 +49,8 @@ class DebatesController < ApplicationController
     @debate = Debate.new(params[:debate])
     @debate.user_id = current_user.id
     @debate.likes = 0
+
+
     
     respond_to do |format|
 

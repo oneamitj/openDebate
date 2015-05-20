@@ -2,24 +2,45 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Topic:</b>
-  <%= @debate.topic %>
+  <h2>
+  	<%= @debate.topic %> | 
+	  	<small>
+	  		<%= @debate.user.email %>
+	  	</small>
+  </h2>
 </p>
+
+
+<p>
+  <b>Likes:</b>
+  <%= @debate.likes %>
+</p>
+
 
 <p>
   <b>Description:</b>
   <%= @debate.description %>
 </p>
 
-<p>
-  <b>Uploaded by:</b>
-  <%= @debate.user.email %>
-</p>
 
-<p>
-  <b>Likes:</b>
-  <%= @debate.likes %>
-</p>
+<% @prev_comment.each do |comment| %>
+	<p>
+		<strong><%= comment.user.full_name %> :</strong>
+	  <%= comment.description %>
+	</p>
+<%end%>
+
+<%= form_for(@comment) do |f| %>
+	<div class="field">
+    
+    <%= f.text_area :description, placeholder: 'comment...' %>
+	</div>
+	<%= f.hidden_field :debate_id, value: @debate.id %>
+	<%= f.hidden_field :user_id, value: current_user.id %>
+	<div class="actions">
+    <%= f.submit %>
+  </div>
+<%end%>
 
 
 <%= link_to 'Edit', edit_debate_path(@debate) %> |
