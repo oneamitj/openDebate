@@ -16,7 +16,6 @@ class DebatesController < ApplicationController
   def show
 
     @debate = Debate.find(params[:id])
-    @user = User.find(user_id).email
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @debate }
