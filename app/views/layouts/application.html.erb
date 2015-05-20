@@ -11,13 +11,27 @@
 
 
 </head>
+<li class="divider-vertical"></li>
+	<div class="navbar navbar-fixed-top">
+		
+		<div class="navbar-inner">
+			<div class="container"> 
 
-<body>
+				<a href="#" class="brand">OpenDebate</a>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+				<ul class="nav">
+					<li class="divider-vertical"></li>
+					<li><%= link_to "Listing debates", debates_path %></li>
+					<li class="divider-vertical"></li>
+			</div>
+		</div>
+	</div> 
+	<div class="container">
+		 <p class="notice"><%= notice %></p>
+       	<p class="alert"><%= alert %></p>
 
-	<%= yield %>
+<%= yield %>
+</div>
 
 </body>
 </html>
