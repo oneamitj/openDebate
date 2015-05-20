@@ -1,6 +1,7 @@
 class DebatesController < ApplicationController
   # GET /debates
   # GET /debates.json
+
   def index
     @debates = Debate.all
 
@@ -13,8 +14,9 @@ class DebatesController < ApplicationController
   # GET /debates/1
   # GET /debates/1.json
   def show
-    @debate = Debate.find(params[:id])
 
+    @debate = Debate.find(params[:id])
+    @user = User.find(user_id).email
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @debate }
@@ -41,8 +43,9 @@ class DebatesController < ApplicationController
   # POST /debates.json
   def create
     @debate = Debate.new(params[:debate])
-
+    @debate.user_id = current_user.id
     respond_to do |format|
+
       if @debate.save
         format.html { redirect_to @debate, notice: 'Debate was successfully created.' }
         format.json { render json: @debate, status: :created, location: @debate }
@@ -55,6 +58,7 @@ class DebatesController < ApplicationController
 
   # PUT /debates/1
   # PUT /debates/1.json
+
   def update
     @debate = Debate.find(params[:id])
 
