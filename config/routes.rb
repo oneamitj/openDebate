@@ -1,7 +1,9 @@
 OpenDebate::Application.routes.draw do
   devise_for :users
 
-  resources :debates
+  resources :debates do
+    post :like
+  end
 
 
   # The priority is based upon order of creation:
