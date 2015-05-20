@@ -10,13 +10,16 @@
   </h2>
 </p>
 
-
-<p>
-
-  <%= link_to "Trend it!", :back %>
-  <%= link_to "Untrend it!", :back %>
-</p>
-
+<% if not @prev_like %>
+	<%= form_for(@like) do |f| %>
+		<%= f.hidden_field :debate_id, value: @debate.id %>
+		<%= f.hidden_field :user_id, value: current_user.id %>
+		<%= f.submit "Trend it!" %>
+		<%= link_to "Trend it!", likes_path, method: :post %>
+	<%end%>
+<%else%>
+	<%= link_to "Untrend it!", like_path(@prev_like[:id]), method: :delete %>
+<%end%>
 
 <p>
   <b>Description:</b>
