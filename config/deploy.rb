@@ -24,6 +24,8 @@ set :ssh_options, {
   # password: 'please use keys'
 }
 
+set :log_level, :info
+
 namespace :deploy do
 
   after :restart, :clear_cache do
