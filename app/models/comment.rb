@@ -3,4 +3,6 @@ class Comment < ActiveRecord::Base
 
   belongs_to :debate
   belongs_to :user
+
+  validate :description, presence: true
 end
