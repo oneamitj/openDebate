@@ -1,3 +1,15 @@
 // Place all the styles related to the debates controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.debate {
+	border-bottom: solid 1px #E8ADAA;
+	padding: 5px 0;
+	p {
+		margin: 4px 0;
+	}
+
+    &:hover {
+		background: #FFF5EE; 
+	}
+}

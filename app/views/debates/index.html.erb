@@ -1,29 +1,24 @@
-<h1>Listing debates</h1>
-
-<table>
-  <tr>
-    <th>Topic</th>
-    <th>Description</th>
-    <th>User</th>
-    <th>Likes</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="page-header">
+  <h1>Listing debates</h1>
+</div> 
+<div class = 'btn btn-success'>
+<%= link_to 'New Debate', new_debate_path %> 
+</div>
 
 <% @debates.each do |debate| %>
-  <tr>
-    <td><%= debate.topic %></td>
-    <td><%= debate.description %></td>
-    <td><%= debate.user_id %></td>
-    <td><%= debate.likes %></td>
-    <td><%= link_to 'Show', debate %></td>
-    <td><%= link_to 'Edit', edit_debate_path(debate) %></td>
-    <td><%= link_to 'Delete', debate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+  <div class='debate'>
+    <strong><%= debate.topic %></strong>
+    <p><%= debate.description %></p>
+    <p><%= debate.user_id %></p>
+    <p><%= debate.likes %></p>
+    <div class='meta'>
+      <%= link_to time_ago_in_words(debate.created_at) +' ago', debate %>
+      <% if (current_user && current_user.debate_ids.include?(debate.id)) %>
+        <span class="hover_show hidden">
+          | <%= link_to 'Edit', edit_debate_path(debate) %> |
+          <%= link_to 'Delete', debate, method: :delete, data: { confirm: 'Are you sure U want to delete?' } %>
+        </span> 
+      <% end %>
+     </div>
+  </div>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Debate', new_debate_path %>
