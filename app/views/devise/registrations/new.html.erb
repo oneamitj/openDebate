@@ -4,13 +4,16 @@
   <%= devise_error_messages! %>
 
   <div><%= f.label :first_name %><br />
-	<%= f.first_name_field :first_name %></div>
+	<%= f.text_field :first_name %></div>
 
-<div><%= f.label :last_name %><br />
-	<%= f.last_name_field :last_name %></div>
+  <div><%= f.label :last_name %><br />
+	<%= f.text_field :last_name %></div>
 
-<div><%= f.label :first_name %><br />
-	<%= f.label :last_name %></div>	
+  <div><%= f.label :user_name %><br />
+  <%= f.text_field :user_name %></div> 
+
+  <div><%= f.label :gender %> <br>
+  <%= f.select :gender, options_for_select([["Male", 1], ["Female", 0]]) %></div>
 
   <div><%= f.label :email %><br />
   <%= f.email_field :email, :autofocus => true %></div>

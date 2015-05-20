@@ -12,8 +12,9 @@
 
 
 <p>
-  <b>Likes:</b>
-  <%= @debate.likes %>
+
+  <%= link_to "Trend it!", :back %>
+  <%= link_to "Untrend it!", :back %>
 </p>
 
 
@@ -26,20 +27,33 @@
 <% @prev_comment.each do |comment| %>
 	<p>
 		<strong><%= comment.user.full_name %> :</strong>
-	  <%= comment.description %>
+		<% if comment.tag %>
+			<strong><%= comment.description %></strong>
+		<% else %>
+			<%= comment.description %>
+		<%end%>
 	</p>
 <%end%>
 
 <%= form_for(@comment) do |f| %>
+	-------------------------------------------------------
 	<div class="field">
-    
-    <%= f.text_area :description, placeholder: 'comment...' %>
+    	<%= f.text_area :description, placeholder: 'comment...' %>
 	</div>
+
 	<%= f.hidden_field :debate_id, value: @debate.id %>
 	<%= f.hidden_field :user_id, value: current_user.id %>
+	
+	<div class="field">
+	    <%= f.radio_button :tag, "true" %>
+	    <%= f.label :tag, "I'm with this.", :value => "true"  %><br>
+	    <%= f.radio_button :tag, "false" %>
+	    <%= f.label :tag, "I'm against this.", :value => "false" %>
+  	</div>
+
 	<div class="actions">
-    <%= f.submit %>
-  </div>
+		<%= f.submit %>
+	</div>
 <%end%>
 
 
