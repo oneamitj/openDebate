@@ -47,9 +47,9 @@
 	
 	<div class="field">
 	    <%= f.radio_button :tag, "true", checked: true %>
-	    <%= f.label :tag, "I'm with this.", :value => "true" %><br>
+	    <%= f.label :tag, "I'm with this.", :value => "true", class: "for" %><br>
 	    <%= f.radio_button :tag, "false" %>
-	    <%= f.label :tag, "I'm against this.", :value => "false" %>
+	    <%= f.label :tag, "I'm against this.", :value => "false", class: "against"  %>
   </div>
 
 	<div class="actions">
