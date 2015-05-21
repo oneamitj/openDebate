@@ -46,11 +46,11 @@
 	<%= f.hidden_field :user_id, value: current_user.id %>
 	
 	<div class="field">
-	    <%= f.radio_button :tag, "true" %>
-	    <%= f.label :tag, "I'm with this.", :value => "true"  %><br>
+	    <%= f.radio_button :tag, "true", checked: true %>
+	    <%= f.label :tag, "I'm with this.", :value => "true" %><br>
 	    <%= f.radio_button :tag, "false" %>
 	    <%= f.label :tag, "I'm against this.", :value => "false" %>
-  	</div>
+  </div>
 
 	<div class="actions">
 		<%= f.button :Comment, class: "btn btn-primary" %>
@@ -59,9 +59,15 @@
 <%end%>
 
 
-<%= link_to 'Edit', edit_debate_path(@debate) %> |
-<%= link_to 'Back', debates_path %>
-<%= link_to 'Like', debate_like_path(@debate), method: :post %>
+
+<%= link_to 'Back', debates_path %> 
+ 			<% if (current_user && current_user.debate_ids.include?(@debate.id)) %>
+        
+          | <%= link_to 'Edit', edit_debate_path(@debate) %> |
+          <%= link_to 'Delete', debate_path(@debate), method: :delete, data: { confirm: 'Are you sure U want to delete?' } %>
+       
+      <% end %>
+
 
 <style type="text/css">
 	

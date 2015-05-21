@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150520174646) do
+ActiveRecord::Schema.define(:version => 20150521054638) do
 
   create_table "comments", :force => true do |t|
     t.text     "description"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(:version => 20150520174646) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "user_name"
-    t.boolean  "gender"
+    t.string   "gender"
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"

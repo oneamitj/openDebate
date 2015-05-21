@@ -3,7 +3,12 @@ class DebatesController < ApplicationController
   # GET /debates.json
 
   def index
-    @debates = Debate.all
+    
+    @debates = Debate.trending_debates
+
+    # @debates = Debate.find(trend)
+
+    # binding.pry
 
     respond_to do |format|
       format.html # index.html.erb
@@ -52,7 +57,7 @@ class DebatesController < ApplicationController
 
     @debate = Debate.new(params[:debate])
     @debate.user_id = current_user.id
-    @debate.likes = 0
+    
 
 
     
@@ -66,6 +71,7 @@ class DebatesController < ApplicationController
         format.json { render json: @debate.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PUT /debates/1
@@ -95,6 +101,17 @@ class DebatesController < ApplicationController
       format.html { redirect_to debates_url }
       format.json { head :no_content }
     end
+  end
+
+  def all
+    @debates = Debate.all
+  end
+
+  def hot
+    @debates = Debate.hot_debates
+
+    # @debates = Debate.find(hot)
+    # binding.pry
   end
   
 

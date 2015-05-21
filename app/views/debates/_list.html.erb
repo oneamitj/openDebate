@@ -1,0 +1,23 @@
+<div class="page-header">
+  <%= button_to 'New Debate', new_debate_path, method: :get,  class: 'btn btn-primary' %> 
+</div> 
+<% @debates.each do |debate| %>
+
+  <div class='debate'>
+  <%# binding.pry%>
+    <font size="5"><%= debate.topic %></font>
+    <p><%= debate.description %></p>
+    <p><i>Uploaded by: </i><%= debate.user.first_name %></p>
+
+    
+    <div class='meta'>
+      <%= link_to time_ago_in_words(debate.created_at) +' ago', debate %>
+      <% if (current_user && current_user.debate_ids.include?(debate.id)) %>
+        
+          | <%= link_to 'Edit', edit_debate_path(debate) %> |
+          <%= link_to 'Delete', debate_path(debate), method: :delete, data: { confirm: 'Are you sure you want to delete?' } %>
+          <br>
+      <% end %>
+    </div> 
+  </div>
+<% end %>

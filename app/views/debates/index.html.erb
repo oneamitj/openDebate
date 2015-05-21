@@ -1,25 +1,4 @@
-<div class="page-header">
-  <h1>Listing debates</h1>
-</div> 
 
-<%= button_to 'New Debate', new_debate_path, method: :get, class: 'btn btn-primary' %> 
+ <h1>Trending Debates</h1>
+<%= render 'list' %>
 
-<% @debates.each do |debate| %>
-  <div class='debate'>
-    <strong><%= debate.topic %></strong>
-    <p><%= debate.description %></p>
-    <p><%= debate.user_id %></p>
-    <p><%= debate.likes %></p>
-    <div class='meta'>
-      <%= link_to time_ago_in_words(debate.created_at) +' ago', debate %>
-
-      <% if (current_user && current_user.debate_ids.include?(debate.id)) %>
-        <span class="hover_show hidden">
-
-          | <%= link_to 'Edit', edit_debate_path(debate) %> |
-          <%= link_to 'Delete', debate, method: :delete, data: { confirm: 'Are you sure U want to delete?' } %>
-        </span> 
-      <% end %>
-     </div>
-  </div>
-<% end %>
