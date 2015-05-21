@@ -3,6 +3,10 @@ OpenDebate::Application.routes.draw do
 
   resources :debates do
     post :like
+    collection do
+      get :all
+      get :hot
+    end
   end
 
 
@@ -59,6 +63,7 @@ OpenDebate::Application.routes.draw do
   resources :comments, only: [:create, :edit, :update]
   resources :likes, only: [:create, :destroy]
   root :to => 'debates#index'
+
 
   # See how all your routes lay out with "rake routes"
 

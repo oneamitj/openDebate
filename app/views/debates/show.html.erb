@@ -9,6 +9,7 @@
 	  	</small>
   </h2>
 </p>
+  
 
 <h4><%= Like._count(@debate.id)%>
 	<small>
@@ -23,14 +24,14 @@
 </br>
 
 <p>
-  <b>Description:</b>
+  <b>Description:</b><br />
   <%= @debate.description %>
 </p>
 
 
 <% @prev_comment.each do |comment| %>
 	<p class="<%= comment.tag ? 'for' : 'against' %>">
-		<strong><%= comment.user.user_name %> :</strong>
+		<strong><%= comment.user.user_name %> :</strong><br />
 		<span><%= comment.description %></span>
 	</p>
 <%end%>
