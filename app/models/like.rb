@@ -9,4 +9,8 @@ class Like < ActiveRecord::Base
   		l
   	end
   end
+
+  def self._count(did)
+  	Like.find_all_by_debate_id(did).count
+  end
 end

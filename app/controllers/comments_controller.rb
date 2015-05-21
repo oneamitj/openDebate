@@ -11,6 +11,7 @@ class CommentsController < ApplicationController
 			@comment.save!
 			redirect_to debate_path(params[:comment][:debate_id])
 		else
+			# notice: "Cant perform blank comment."
 			redirect_to :back
 		end
 	end
