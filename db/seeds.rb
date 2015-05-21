@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 users1 = User.create(first_name: "Amit", last_name: "Joshi", user_name: "wannamit", email: "wannamit@gmail.com", gender: "m", password: "aafter18", password_confirmation: "aafter18")
-users2 = User.create(first_name: "Sneha", last_name: "Neupane", user_name: "elrosa.sneha", email: "elrosa.sneha@gmail.com", gender: "f", password: "aafter18", password_confirmation: "aafter18")
+users2 = User.create(first_name: "Sneha", last_name: "Neupane", user_name: "chari", email: "elrosa.sneha@gmail.com", gender: "f", password: "aafter18", password_confirmation: "aafter18")
 users3 = User.create(first_name: "Nirdosh", last_name: "Gautam", user_name: "nirdosh17", email: "nrgt.gtm@gmail.com", gender: "m", password: "aafter18", password_confirmation: "aafter18")
 users3 = User.create(first_name: "Iksya", last_name: "Gurung", user_name: "xha.grg", email: "xha.grg@cloudfactory.com", gender: "m", password: "aafter18", password_confirmation: "aafter18")
 users3 = User.create(first_name: "Karmath", last_name: "Dangol", user_name: "karmath", email: "katmath@cloudfactory.com", gender: "m", password: "aafter18", password_confirmation: "aafter18")

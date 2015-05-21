@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   has_many :debates
+  has_many :likes
   has_many :comments
   
   validate :email, format: {with: /^\w*[a-zA-Z]\w*@[a-z]+.[a-z]+/, message: 'Enter a valid email.'}
