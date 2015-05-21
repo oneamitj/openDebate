@@ -45,11 +45,11 @@
 	<%= f.hidden_field :user_id, value: current_user.id %>
 	
 	<div class="field">
-	    <%= f.radio_button :tag, "true" %>
-	    <%= f.label :tag, "I'm with this.", :value => "true"  %><br>
+	    <%= f.radio_button :tag, "true", checked: true %>
+	    <%= f.label :tag, "I'm with this.", :value => "true" %><br>
 	    <%= f.radio_button :tag, "false" %>
 	    <%= f.label :tag, "I'm against this.", :value => "false" %>
-  	</div>
+  </div>
 
 	<div class="actions">
 		<%= f.button :Comment, class: "btn btn-primary" %>
