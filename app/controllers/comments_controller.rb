@@ -14,9 +14,16 @@ class CommentsController < ApplicationController
 			# notice: "Cant perform blank comment."
 			redirect_to :back
 		end
+		if @comment.save
+  			flash.now[:notice] = 'comment posted!'
+		else
+  				flash.now[:alert] = 'Comment cannot be left blank!'
+		end
+
+		
+		end
 	end
 
 	def edit
 	end
 
-end
