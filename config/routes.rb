@@ -3,6 +3,10 @@ OpenDebate::Application.routes.draw do
 
   resources :debates do
     post :like
+    collection do
+      get :hot
+      get :all
+    end
   end
 
 

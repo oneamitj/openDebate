@@ -57,9 +57,15 @@
 <%end%>
 
 
-<%= link_to 'Edit', edit_debate_path(@debate) %> |
-<%= link_to 'Back', debates_path %>
-<%= link_to 'Like', debate_like_path(@debate), method: :post %>
+
+<%= link_to 'Back', debates_path %> 
+ 			<% if (current_user && current_user.debate_ids.include?(@debate.id)) %>
+        
+          | <%= link_to 'Edit', edit_debate_path(@debate) %> |
+          <%= link_to 'Delete', debate_path(@debate), method: :delete, data: { confirm: 'Are you sure U want to delete?' } %>
+       
+      <% end %>
+
 
 <style type="text/css">
 	
