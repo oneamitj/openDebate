@@ -8,7 +8,23 @@
 	  <%= csrf_meta_tags %>
 	</head>
 
-	<body>		
+	<body>	
+		<br/><br/>
+	  <% if notice || alert %>	
+		  <div class="container">
+		  	<br/>
+		  	<% if notice %>
+				  <p class="alert"><%= notice %></p>
+				<% elsif alert %>
+					<p class="alert"><%= alert %></p>
+				<% end %>
+			</div>	
+		<% end %>
+
+		<div class="container">
+			<%= yield %>
+		</div>
+		
 		<div class="navbar navbar-fixed-top">
 			
 			<div class="navbar-inner">
@@ -18,31 +34,27 @@
     					
   						</div>
 					</div>
-					<a href="#" class="brand">OpenDebate</a>
+					<a href="/debates" class="brand">OpenDebate</a>
 					<div class="navbar-inner">
-						<% if current_user %>
-							<div style="float: right;">  Logged in as: <%= current_user.email%> 
-			    			<%= link_to(' Logout', destroy_user_session_path, :method => :delete) %>
-			  			</div>
-		  			<%end%>
+						<div class="container"> 
+							<% if current_user %>
+								<div style="float: right;">  Logged in as: <%= current_user.email%> 
+				    			<%= link_to(' Logout', destroy_user_session_path, :method => :delete) %>
+				  			</div>
+			  			
 
-						<ul class="nav">
-							<li><%= link_to "All debates", all_debates_path %></li>
-		          <li><%= link_to "Trending debates", debates_path %></li>
-		          <li><%= link_to "Hot debates", hot_debates_path %></li>
-						</ul>
+								<ul class="nav">
+									<li><%= link_to "All debates", all_debates_path %></li>
+				          <li><%= link_to "Trending debates", debates_path %></li>
+				          <li><%= link_to "Hot debates", hot_debates_path %></li>
+								</ul>
+								</div>
+							<%end%>
+
 					</div>
 				</div>
 			</div>
 		</div>
-
-		<div class="container">
-			<p class="notice"><%= notice %></p>
-			<p class="alert"><%= alert %></p>
-
-			<%= yield %>
-		</div>
-
 	</body>
 </html>
 

@@ -10,9 +10,9 @@ class User < ActiveRecord::Base
 
   # attr_accessible :title, :body
 
-  has_many :debates
-  has_many :likes
-  has_many :comments
+  has_many :debates, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
   
   validate :email, format: {with: /^\w*[a-zA-Z]\w*@[a-z]+.[a-z]+/, message: 'Enter a valid email.'}
   validate :first_name, :last_name, format: {with: /^[a-zA-Z ]*/, message: 'Invalid name.'}

@@ -1,8 +1,8 @@
 class Debate < ActiveRecord::Base
   attr_accessible :description, :likes, :topic, :user_id
 
-  has_many :comments
-  has_many :likes
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
   belongs_to :user
   
   validates :topic, presence: true
@@ -22,7 +22,7 @@ class Debate < ActiveRecord::Base
   end
 
   def self.find_debates(debate_ids)
-    debate_ids.map { |id| Debate.find(id)}
+    debate_ids.uniq.map { |id| Debate.where(id: id).first}.compact
   end
 
 end
