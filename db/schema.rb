@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150520072951) do
+ActiveRecord::Schema.define(:version => 20150520174646) do
 
   create_table "comments", :force => true do |t|
     t.text     "description"
@@ -29,6 +29,14 @@ ActiveRecord::Schema.define(:version => 20150520072951) do
     t.integer  "likes"
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
+    t.integer  "like_id"
+  end
+
+  create_table "likes", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "debate_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -46,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20150520072951) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.integer  "like_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

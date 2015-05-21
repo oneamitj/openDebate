@@ -3,6 +3,6 @@ class Debate < ActiveRecord::Base
 
   has_many :comments
   belongs_to :user
-
+  
   validates :topic, presence: true
 end

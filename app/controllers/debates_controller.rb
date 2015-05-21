@@ -16,8 +16,12 @@ class DebatesController < ApplicationController
   def show
     @debate = Debate.find(params[:id])
 
-    @prev_comment = @debate.comments
+    @prev_like = Like.like?(current_user.id, params[:id])
+    @like = Like.new
 
+    # binding.pry
+    
+    @prev_comment = @debate.comments
     @comment = Comment.new
 
     respond_to do |format|
@@ -93,11 +97,5 @@ class DebatesController < ApplicationController
     end
   end
   
-  def like
-    @debate = Debate.find(params[:id])
-    likes = (@debate.likes || 0) + 1
-    @debate.update_attributes(likes: likes)
-    redirect_to :back, notice: 'You liked the post.'
-  end
 
 end

@@ -10,13 +10,17 @@
   </h2>
 </p>
 
+<h4><%= Like._count(@debate.id)%>
+	<small>
+		<% if not @prev_like %>
+			<%= link_to "Trend it!", likes_path(debate_id: @debate.id, user_id: current_user.id), method: :post %>
+		<%else%>
+			<%= link_to "Untrend it!", like_path(@prev_like[:id]), method: :delete %>
+		<%end%>
+	</small>
+</h4>
 
-<p>
-
-  <%= link_to "Trend it!", :back %>
-  <%= link_to "Untrend it!", :back %>
-</p>
-
+</br>
 
 <p>
   <b>Description:</b>
@@ -25,13 +29,9 @@
 
 
 <% @prev_comment.each do |comment| %>
-	<p>
-		<strong><%= comment.user.full_name %> :</strong>
-		<% if comment.tag %>
-			<strong><%= comment.description %></strong>
-		<% else %>
-			<%= comment.description %>
-		<%end%>
+	<p class="<%= comment.tag ? 'for' : 'against' %>">
+		<strong><%= comment.user.user_name %> :</strong>
+		<span><%= comment.description %></span>
 	</p>
 <%end%>
 
@@ -52,7 +52,7 @@
   	</div>
 
 	<div class="actions">
-		<%= f.submit %>
+		<%= f.button 'Comment', class: "btn btn-primary" %>
 	</div>
 <%end%>
 
@@ -60,3 +60,15 @@
 <%= link_to 'Edit', edit_debate_path(@debate) %> |
 <%= link_to 'Back', debates_path %>
 <%= link_to 'Like', debate_like_path(@debate), method: :post %>
+
+<style type="text/css">
+	
+.for {
+	color: green;
+}
+
+.against {
+	color: red;	
+}
+
+</style>	
